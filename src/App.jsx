@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
+import './App.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
+
 
 const App = () => {
   const [item, setItem] = useState([]);
@@ -9,7 +10,6 @@ const App = () => {
 
   useEffect(() => {
     const savedItems = localStorage.getItem('items');
-
     if (savedItems) {
       setItem(JSON.parse(savedItems));
     }
@@ -26,14 +26,13 @@ const App = () => {
       return;
     }
     setItem((prev) => [...prev, { name: inputVal, checked: false }]);
-    notify();
+    notify("item has been added");
     inputRef.current.value = '';
   };
 
   const addItem = (e) => {
     if (e.key === "Enter") {
       getInput();
-      notify();
     }
   };
 
@@ -49,13 +48,15 @@ const App = () => {
     setItem((prev) => {
       const updatedItems = [...prev];
       updatedItems.splice(index, 1);
-      dltNotify();
+      notify("item has been deleted")
       return updatedItems;
     });
   };
 
-  const notify = () => toast("Item has been added to the list!");
-  const dltNotify = () => toast("Item has been deleted!");
+  function notify(e) {
+    toast(e)
+  };
+
 
   return (
     <>
@@ -67,11 +68,11 @@ const App = () => {
               type="text"
               ref={inputRef}
               onKeyDown={addItem}
-              style={{ padding: '10px', outline:'none' }}
+              style={{ padding: '10px', outline: 'none' }}
               className='input'
               placeholder='//write the item name to add'
             />
-            <button onClick={getInput} style={{ padding: '10px', backgroundColor:'#06B6D4', color: 'white', outline:'none', border: 'none' }}>Add</button>
+            <button onClick={getInput} style={{ padding: '10px', backgroundColor: '#06B6D4', color: 'white', outline: 'none', border: 'none' }}>Add</button>
           </div>
           <div className='items'>
             {item.map((prod, index) => {
@@ -96,10 +97,13 @@ const App = () => {
             })}
           </div>
         </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </>
   );
 };
 
 export default App;
+
+
+
