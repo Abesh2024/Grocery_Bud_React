@@ -1,0 +1,62 @@
+/* App.css */
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set body height to viewport height */
+  margin: 0; /* Remove default margin */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;  /* Set a specific height */
+  width: 400px;   /* Set a specific width */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); /* Box shadow */
+  transition: box-shadow 0.5s ease; /* Smooth transition for box shadow */
+  overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+.container::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+.container:hover {
+  box-shadow: 0 0 5px #000; /* 5px black box shadow on hover */
+}
+
+.input {
+  margin-right: 10px; /* Add some margin to the right of the input for spacing */
+}
+
+.items {
+  margin-top: 20px; /* Add some margin to the top of the items container for spacing */
+  max-height: 300px; /* Max height for the items container */
+  overflow-y: scroll; /* Enable vertical scrolling */
+}
+
+.items::-webkit-scrollbar {
+  display: none;
+}
+
+.single-item {
+  margin-bottom: 15px; /* Add more margin to the bottom of each item for increased spacing */
+  word-wrap: break-word; /* Wrap long words onto the next line */
+  max-width: 100%; /* Set maximum width */
+}
+
+.single-item span {
+  margin-right: 20px; /* Add more spacing between item name and delete button */
+}
+
+.single-item button {
+  margin-left: 20px; /* Add more margin to the left of the delete button for increased spacing */
+}
+
+.for-input {
+  position: sticky;
+}
