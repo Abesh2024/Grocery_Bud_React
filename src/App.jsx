@@ -10,6 +10,7 @@ const App = () => {
 
   useEffect(() => {
     const savedItems = localStorage.getItem('items');
+
     if (savedItems) {
       setItem(JSON.parse(savedItems));
     }
@@ -56,7 +57,7 @@ const App = () => {
   function notify(e) {
     toast(e)
   };
-
+  
 
   return (
     <>
@@ -97,7 +98,19 @@ const App = () => {
             })}
           </div>
         </div>
-        <ToastContainer />
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition:Bounce
+        />
       </div>
     </>
   );
